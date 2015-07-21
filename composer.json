@@ -1,5 +1,8 @@
 {
     "require":{
-        "phalcon/devtools":"dev-master"
+        "phalcon/devtools":"dev-master",
+        "php":"~7.0.0beta1",
+        "hhvm":"~3.3",
+        "ext-phalcon":"~2.0.0"
     }
 }
