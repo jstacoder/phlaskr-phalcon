@@ -1,1 +1,1 @@
-web: bin/heroku-hhvm-nginx
+web: boot.sh
