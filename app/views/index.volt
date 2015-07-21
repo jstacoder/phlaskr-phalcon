@@ -7,6 +7,9 @@
     {{ assets.outputCss() }}
 	</head>
 	<body>
+        {% if navlinks %}
+            {% include "blocks/header.volt" %}
+        {% endif %}
         <p>{{ flash.output() }}</p>
         <div class=container>
             <div class=row>

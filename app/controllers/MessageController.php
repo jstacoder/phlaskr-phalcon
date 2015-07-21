@@ -6,6 +6,7 @@ class MessageController extends ControllerBase {
     private $_msg_cache = array();
 
     public function indexAction(){
+        parent::indexAction();
         $this->view->form = new MessageForm;
         $this->view->messages = array_reverse(Messages::find()->toArray());
         $this->view->afterMsg = $this->_msgs ? $this->_msgs['success'] ? $this->_msgs['success'] : $this->_msgs['error'] ? $this->_msgs['error'] : '' : '';
