@@ -1,6 +1,5 @@
 {
     "require":{
-        "phalcon/devtools":"dev-master",
         "php":"~5.6.9"
     }
 }
