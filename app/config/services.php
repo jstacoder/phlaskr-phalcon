@@ -68,10 +68,12 @@ $di->set('view', function () use ($config) {
     $view->registerEngines(array(
         '.volt' => function ($view, $di) use ($config) {
             $volt = new VoltEngine($view, $di);
-            $volt->setOptions(array(
-                'compiledPath' => $config->application->cacheDir,
-                'compiledSeparator' => '_'
-            ));
+            if(!isset($_SERVER['CLEARDB_DATABASE_URL'])){
+                $volt->setOptions(array(
+                    'compiledPath' => $config->application->cacheDir,
+                    'compiledSeparator' => '_'
+                ));
+            }
             return $volt;
         },
         '.phtml' => 'Phalcon\Mvc\View\Engine\Php'
