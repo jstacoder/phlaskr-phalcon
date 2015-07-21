@@ -1,0 +1,8 @@
+{
+    "dependencies":{
+        "bower":"latest"
+    },
+    "engines":[
+        "iojs"
+    ]
+}
