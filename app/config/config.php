@@ -33,10 +33,3 @@ return new \Phalcon\Config(array(
 
     )  
 ));
-    $dbcfg = array(
-        'adapter'     => 'Mysql',
-        'host'        => 'localhost',
-        'username'    => 'root',
-        'password'    => '14wp88',
-        'dbname'      => 'testing55'
-    );    
