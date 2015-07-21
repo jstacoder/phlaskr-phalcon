@@ -26,9 +26,13 @@ try {
      * Handle the request
      */
     $application = new \Phalcon\Mvc\Application($di);
+    $application->useImplicitView(false);
 
     echo $application->handle()->getContent();
 
 } catch (Exception $e) {
-    echo "PhalconException: $e->getMessage()";
+    echo "PhalconException:" . $e->getMessage().'<br/>';
+    echo "File: " . $e->getFile().'<br/>';
+    echo "Line: " . $e->getLine().'<br/>';
+    print_r(get_class_methods($e));
 }

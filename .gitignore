@@ -6,3 +6,4 @@ public/webtools*
 .phalcon*
 app/config/config*
 .hta*
+app/cache/*

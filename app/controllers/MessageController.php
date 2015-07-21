@@ -9,6 +9,11 @@ class MessageController extends ControllerBase {
         $this->view->form = new MessageForm;
         $this->view->messages = array_reverse(Messages::find()->toArray());
         $this->view->afterMsg = $this->_msgs ? $this->_msgs['success'] ? $this->_msgs['success'] : $this->_msgs['error'] ? $this->_msgs['error'] : '' : '';
+        $this->view->form_file = 'layouts/message.volt';
+        $this->view->assetData = (array)$this->assets;
+        $this->view->assets = $this->assets;
+        print_r((array)$this->assets);
+        echo $this->view->render('message/index');
     }
     public function addAction(){
         $msg = new Messages();
@@ -32,6 +37,8 @@ class MessageController extends ControllerBase {
     }
     public function listAction(){
         $this->view->messages = Messages::find()->toArray();
+        $this->view->form_file = 'layouts/message.volt';
+        echo $this->view->render('message/list');
     }
     public function removeAction(){
             $msg_id = $this->request->getPost()['msg_id'];

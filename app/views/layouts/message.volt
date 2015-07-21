@@ -1,14 +1,7 @@
 <hr />
     <p>messages.volt</p>
 <hr />
-{% if afterMsg %}
-    {{ afterMsg }}
-{% endif %}
 {{ form('/message/add') }}
-    {% for element in form %}
-
-    {{ element }}
-    {% endfor %}
     <fieldset>
         <div class=control-group>
             <label class=control-label>title</label>
@@ -22,4 +15,4 @@
     </fieldset>
     </form>
 
-    <?php echo $this->getContent(); ?>
+    <?php //echo $this->getContent(); ?>

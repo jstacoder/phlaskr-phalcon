@@ -1,7 +1,7 @@
 <?php
 
 use Phalcon\DI\FactoryDefault;
-use Phalcon\Mvc\View;
+use Phalcon\Mvc\View\Simple as View;
 use Phalcon\Mvc\Url as UrlResolver;
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
@@ -10,11 +10,14 @@ use Phalcon\Events\Manager as EventsManager;
 use Phalcon\Mvc\Model\Metadata\Memory as MetaDataAdapter;
 use Phalcon\Session\Adapter\Files as SessionAdapter;
 use Phalcon\Flash\Session as flash;
+use Phalcon\Assets\Manager;
 
 /**
  * The FactoryDefault Dependency Injector automatically register the right services providing a full stack framework
  */
 $di = new FactoryDefault();
+
+
 
 $di->set('flash',function() {
     $flash = new flash();
@@ -24,6 +27,26 @@ $di->set('flash',function() {
         'error'=>'alert alert-danger'
     ));
     return $flash;
+});
+
+$di->set('assets',function() use ($config){
+    $manager = new Manager();
+    foreach($config->vendorAssets as $k=>$v){
+            if($k == 'css'){
+                foreach($v as $alias=>$file){                                
+                    $manager->collection('css')
+                         ->addCss($file);
+                }
+            }else{
+                foreach($v as $alias=>$file){
+                    $manager->collection('js')
+                         ->addJs($file);
+                }
+            }
+    }
+    $manager->collection('js')->setPrefix('/public/vendor')->setLocal(true);   
+    $manager->collection('css')->setPrefix('/public/vendor')->setLocal(true);   
+    return $manager;
 });
 
 /**
@@ -40,26 +63,19 @@ $di->set('url', function () use ($config) {
  * Setting up the view component
  */
 $di->set('view', function () use ($config) {
-
     $view = new View();
-
     $view->setViewsDir($config->application->viewsDir);
-
     $view->registerEngines(array(
         '.volt' => function ($view, $di) use ($config) {
-
             $volt = new VoltEngine($view, $di);
-
             $volt->setOptions(array(
                 'compiledPath' => $config->application->cacheDir,
                 'compiledSeparator' => '_'
             ));
-
             return $volt;
         },
         '.phtml' => 'Phalcon\Mvc\View\Engine\Php'
     ));
-
     return $view;
 }, true);
 

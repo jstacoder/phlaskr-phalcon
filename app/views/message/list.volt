@@ -1,3 +1,5 @@
+{% extends 'index.volt' %}
+{% block content %}
 <style>
     .msg{
         width:40%;
@@ -9,7 +11,10 @@
     }
 </style>
 <h1>Messages</h1>
+        <?php echo "ahhhh"; ?>
+<?php if($messages): ?>
     <?php foreach($messages as $msg): ?>
+        <?php echo "ahhhh"; ?>
         <div class=msg>
             <br /><hr />
             <h2 style="display:inline-block;">
@@ -25,4 +30,5 @@
             <hr /><br />
         </div>
     <?php endforeach; ?>
-
+<?php endif; ?>
+{% endblock %}

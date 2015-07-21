@@ -1,3 +1,5 @@
+{% extends 'index.volt' %}
+{% block content %}
 <p>hi</p>
 <p>message/index.volt</p>
 
@@ -9,17 +11,16 @@
     }
 </style>
 <h1>Messages</h1>
-    <?php foreach($messages as $msg): ?>
+    {% for msg in messages %}
         <div class=msg>
             <br /><hr />
             <h2>
-                <?php echo $msg['title']; ?>
+                {{ msg['title'] }}
             </h2>
             <p>
-                <?php echo $msg['text']; ?>
+                 {{ msg['text'] }}
             </p>
             <hr /><br />
         </div>
-    <?php endforeach; ?>
-
-<p>by</p>
+    {% endfor %}
+{% endblock %}
