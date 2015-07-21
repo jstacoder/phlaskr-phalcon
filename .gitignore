@@ -1,0 +1,8 @@
+vendor/*
+public/vendor/*
+public/*/codemirror/*
+public/webtools*
+*.lock
+.phalcon*
+app/config/config*
+.hta*
