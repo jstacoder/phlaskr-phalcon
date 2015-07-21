@@ -35,4 +35,5 @@ try {
     echo "File: " . $e->getFile().'<br/>';
     echo "Line: " . $e->getLine().'<br/>';
     print_r(get_class_methods($e));
+    print_r($_SERVER);
 }
