@@ -4,7 +4,8 @@ use Phalcon\Mvc\Controller;
 
 class ControllerBase extends Controller
 {
-    function indexAction(){
+    public function __construct(){
+        parent::__construct();
         $this->view->navlinks = array(
             array(
                 'url'=>'/messages',
