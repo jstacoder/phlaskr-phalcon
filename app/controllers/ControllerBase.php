@@ -16,8 +16,6 @@ class ControllerBase extends Controller
     }
 
     public function initalize(){
-        $links = static::getLinks();
-        if(empty($links)){
             $this->view->navlinks = array(
                 array(
                     'url'=>'/messages',
@@ -30,11 +28,5 @@ class ControllerBase extends Controller
                     'active'=>true
                 )
             );
-        }else{
-            $this->view->navlinks = array();
-            foreach($links as $link){
-                $this->view->navlinks[] = $link;
-            }
-        }
     }
 }
