@@ -3,4 +3,5 @@ public/vendor/*
 public/*/codemirror/*
 public/webtools*
 .phalcon*
+app/config/local*
 app/cache/*

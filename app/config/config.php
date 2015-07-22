@@ -6,13 +6,7 @@ if(isset($_SERVER['CLEARDB_DATABASE_URL'])){
     require_once __DIR__ . '/parser.php';
     $dbcfg = $get_uri_args($_SERVER['CLEARDB_DATABASE_URL']);
 }else{
-    $dbcfg = array(
-        'adapter'     => 'Mysql',
-        'host'        => 'localhost',
-        'username'    => 'root',
-        'password'    => '14wp88',
-        'dbname'      => 'testing55'
-    );    
+    require __DIR__ . 'local_db_cfg.php';
 }
 
 return new \Phalcon\Config(array(
