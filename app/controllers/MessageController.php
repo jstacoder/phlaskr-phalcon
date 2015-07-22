@@ -75,6 +75,7 @@ class MessageController extends ControllerBase {
     public function listAction(){
         $this->view->messages = Messages::find()->toArray();
         $this->view->form_file = 'layouts/message.volt';
+        $this->view->form = new MessageForm;
         echo $this->view->render('message/list');
     }
     public function removeAction(){
