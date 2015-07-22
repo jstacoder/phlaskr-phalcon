@@ -7,8 +7,8 @@
     {{ assets.outputCss() }}
 	</head>
 	<body>
-            {% include "blocks/header.volt" %}
         <div class=container>
+            {% include "blocks/header.volt" %}
             <p>{{ flash.output() }}</p>
             <div class=row>
                 <div class="col-md-4 col-md-push-4">
