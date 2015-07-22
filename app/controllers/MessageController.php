@@ -46,7 +46,7 @@ class MessageController extends ControllerBase {
         }
         $this->view->form = new MessageForm;
         $this->view->form->clear();
-        $this->dispatcher->redirect(array(
+        $this->dispatcher->forward(array(
             "controller"=>"message",
             "action"=>"list"
         ));
@@ -66,7 +66,7 @@ class MessageController extends ControllerBase {
             }else{
                 $this->flash->error('error');
             }
-                $this->dispatcher->redirect(
+                $this->dispatcher->forward(
                                         array(
                                             "controller"=>"message",
                                             "action"=>"list"
