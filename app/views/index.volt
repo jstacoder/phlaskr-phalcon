@@ -5,6 +5,7 @@
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     {{ assets.outputCss() }}
+    {% block extra_css %}{% endblock %}
 	</head>
 	<body>
         <div class=container>
@@ -24,6 +25,7 @@
             </div>
         </div>
         {{ assets.outputJs() }}
+        {% block extra_js %}{% endblock %}
         <script>
             function checkForAlert(){
                 alerts = document.querySelectorAll('.alert');

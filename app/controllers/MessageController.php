@@ -28,6 +28,7 @@ class MessageController extends ControllerBase {
     }
 
     public function indexAction(){
+        $this->initalize();
         $this->view->form = new MessageForm;
         $this->view->messages = array_reverse(Messages::find()->toArray());
         $this->view->afterMsg = $this->_msgs ? 
@@ -46,9 +47,10 @@ class MessageController extends ControllerBase {
             'active'=>false
         );
         parent::addLink($link);
-        echo $this->view->render('message/index');
+        echo $this->view->render('message/list');
     }
     public function addAction(){
+        $this->initalize();
         $msg = new Messages();
         $success = $msg->save($this->request->getPost(),array('title','text'));
         if(!$success){
@@ -73,26 +75,36 @@ class MessageController extends ControllerBase {
         }
     }
     public function listAction(){
-        $this->view->messages = Messages::find()->toArray();
-        $this->view->form_file = 'layouts/message.volt';
-        $this->view->form = new MessageForm;
-        echo $this->view->render('message/list');
+        $this->initalize();
+        $this->view
+             ->messages = Messages::find()->toArray();
+        $this->view
+             ->form_file = 'layouts/message.volt';
+        $this->view
+             ->form = new MessageForm;
+        echo $this->view
+                  ->render('message/list');
     }
     public function removeAction(){
-            $msg_id = $this->request->getPost()['msg_id'];
+        $this->initalize();
+        $msg_id = $this->request
+                       ->getPost()['msg_id'];
             $msg  = Messages::findFirst($msg_id);
             if($success = $msg ? $msg->delete() : null){
 
             #if($success){
-                $this->flash->success('you deleted a message');
+                $this->flash
+                     ->success('you deleted a message');
             }else{
-                $this->flash->error('error');
+                $this->flash
+                     ->error('error');
             }
-                $this->dispatcher->forward(
-                                        array(
-                                            "controller"=>"message",
-                                            "action"=>"list"
-                    )
-                );
-    }
+                $this->dispatcher
+                     ->forward(
+                         array(
+                             "controller"=>"message",
+                             "action"=>"list"
+                         )
+                     );
+            }
 }
