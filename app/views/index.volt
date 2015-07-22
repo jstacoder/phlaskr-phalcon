@@ -30,15 +30,8 @@
                 return alerts.length ? alerts : false;
             }
             setInterval(function(){
-                var alerts = checkForAlert();
-                if(alerts){
-                    for(var i = 0;i >= alerts.length; i++){
-                        setTimeout(function(){
-                            alerts[i].remove();
-                        },10000);
-                    }
-                }
-            },500);
+                checkForAlert().length ? checkForAlert()[0].remove() : false;
+            },1500);
         </script>
 	</body>
 </html>
