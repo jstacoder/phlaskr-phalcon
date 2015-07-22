@@ -62,7 +62,7 @@ class MessageController extends ControllerBase {
             $this->_msgs['success'] = "Success adding Message";
         }
         $this->view->form = new MessageForm;
-        if($this->getRequest()->isPost()){
+        if($this->request->isPost()){
             $this->view->form->clear();
             $this->dispatcher->forward(
                 array(
