@@ -66,7 +66,7 @@ class MessageController extends ControllerBase {
             }else{
                 $this->flash->error('error');
             }
-                $this->dispatcher->forward(
+                $this->dispatcher->redirect(
                                         array(
                                             "controller"=>"message",
                                             "action"=>"list"
