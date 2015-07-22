@@ -45,11 +45,15 @@ class MessageController extends ControllerBase {
             $this->_msgs['success'] = "Success adding Message";
         }
         $this->view->form = new MessageForm;
-        $this->view->form->clear();
-        $this->dispatcher->forward(array(
-            "controller"=>"message",
-            "action"=>"list"
-        ));
+        if($this->getRequest()->isPost()){
+            $this->view->form->clear();
+            $this->dispatcher->forward(
+                array(
+                    "controller"=>"message",
+                    "action"=>"list"
+                )
+            );
+        }
     }
     public function listAction(){
         $this->view->messages = Messages::find()->toArray();
