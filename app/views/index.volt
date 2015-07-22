@@ -31,7 +31,7 @@
             }
             setInterval(function(){
                 checkForAlert().length ? checkForAlert()[0].remove() : false;
-            },1500);
+            },2500);
         </script>
 	</body>
 </html>
