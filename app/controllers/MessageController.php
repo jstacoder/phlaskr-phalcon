@@ -5,6 +5,10 @@ class MessageController extends ControllerBase {
     private $_msgs = array();
     private $_msg_cache = array();
 
+    public function initalize(){
+        parent::initalize();
+    }
+
     public function indexAction(){
         $this->view->form = new MessageForm;
         $this->view->messages = array_reverse(Messages::find()->toArray());
