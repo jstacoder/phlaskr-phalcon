@@ -3,6 +3,4 @@ public/vendor/*
 public/*/codemirror/*
 public/webtools*
 .phalcon*
-app/config/config*
-.hta*
 app/cache/*
