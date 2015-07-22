@@ -29,7 +29,7 @@
                 alerts = document.querySelectorAll('.alert');
                 return alerts.length ? alerts : false;
             }
-            setTimeout(function(){
+            setInterval(function(){
                 var alerts = checkForAlert();
                 if(alerts){
                     for(var i = 0;i >= alerts.length; i++){
