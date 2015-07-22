@@ -24,5 +24,21 @@
             </div>
         </div>
         {{ assets.outputJs() }}
+        <script>
+            function checkForAlert(){
+                alerts = document.querySelectorAll('.alert');
+                return alerts.length ? alerts : false;
+            }
+            setTimeout(function(){
+                var alerts = checkForAlert();
+                if(alerts){
+                    for(var i = 0;i >= alerts.length; i++){
+                        setTimeout(function(){
+                            alerts[i].remove();
+                        },10000);
+                    }
+                }
+            },500);
+        </script>
 	</body>
 </html>
