@@ -7,6 +7,24 @@ class MessageController extends ControllerBase {
 
     public function initalize(){
         parent::initalize();
+        $this->view->navlinks = array(
+            array(
+                'url'=>'/message',
+                'text'=>'messages',
+                'active'=>true                
+            ),
+            array(
+                'url'=>'/message/list',
+                'text'=>'list',
+                'active'=>false                
+            ),
+            array(
+                'url'=>'/',
+                'text'=>'home',
+                'active'=>false
+            )
+        );
+        //print_r((array)$this->assets);
     }
 
     public function indexAction(){
@@ -28,24 +46,6 @@ class MessageController extends ControllerBase {
             'active'=>false
         );
         parent::addLink($link);
-        $this->view->navlinks = array(
-            array(
-                'url'=>'/message',
-                'text'=>'messages',
-                'active'=>true                
-            ),
-            array(
-                'url'=>'/message/list',
-                'text'=>'list',
-                'active'=>false                
-            ),
-            array(
-                'url'=>'/',
-                'text'=>'home',
-                'active'=>false
-            )
-        );
-        //print_r((array)$this->assets);
         echo $this->view->render('message/index');
     }
     public function addAction(){
