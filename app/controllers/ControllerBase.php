@@ -4,18 +4,37 @@ use Phalcon\Mvc\Controller;
 
 class ControllerBase extends Controller
 {
-    public function _construct(){
-        $this->view->navlinks = array(
-            array(
-                'url'=>'/messages',
-                'text'=>'messages',
-                'active'=>false
-            ),
-            array(
-                'url'=>'/messages/add',
-                'text'=>'add',
-                'active'=>true
-            )
-        );
+
+    private static $_links = null;
+
+    private static function getLinks(){
+        return is_null(self::$_links) ? array() : self::$_links;   
+    }
+
+    public static function addLink($link){
+        static::getLinks()[] = $link;
+    }
+
+    public function initalize(){
+        $links = static::getLinks();
+        if(empty($links)){
+            $this->view->navlinks = array(
+                array(
+                    'url'=>'/messages',
+                    'text'=>'messages',
+                    'active'=>false
+                ),
+                array(
+                    'url'=>'/messages/add',
+                    'text'=>'add',
+                    'active'=>true
+                )
+            );
+        }else{
+            $this->view->navlinks = array();
+            foreach($links as $link){
+                $this->view->navlinks[] = $link;
+            }
+        }
     }
 }

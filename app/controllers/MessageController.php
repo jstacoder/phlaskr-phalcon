@@ -6,14 +6,25 @@ class MessageController extends ControllerBase {
     private $_msg_cache = array();
 
     public function indexAction(){
-        parent::_construct();
         $this->view->form = new MessageForm;
         $this->view->messages = array_reverse(Messages::find()->toArray());
-        $this->view->afterMsg = $this->_msgs ? $this->_msgs['success'] ? $this->_msgs['success'] : $this->_msgs['error'] ? $this->_msgs['error'] : '' : '';
+        $this->view->afterMsg = $this->_msgs ? 
+                                $this->_msgs['success'] ? 
+                                $this->_msgs['success'] : 
+                                $this->_msgs['error'] ? 
+                                $this->_msgs['error'] : 
+                                '' : 
+                                '';
         $this->view->form_file = 'layouts/message.volt';
         $this->view->assetData = (array)$this->assets;
         $this->view->assets = $this->assets;
-        print_r((array)$this->assets);
+        $link = array(
+            'url'=>'/messages',
+            'text'=>'messages',
+            'active'=>false
+        );
+        parent::addLink($link);
+        //print_r((array)$this->assets);
         echo $this->view->render('message/index');
     }
     public function addAction(){
