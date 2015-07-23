@@ -12,14 +12,14 @@ class SignupController extends ControllerBase{
 
         if($success){
             //echo '<pre>';
-            $this->flash->success("Thanks for registering $user->email");
+            echo $this->flash->success("Thanks for registering $user->email");
             //echo "</pre>";
             //echo "Thanks for registering<br/>$user->email<br/>";
         }else{  
-            $this->flash->error("error");            
+            echo $this->flash->error("error");            
             //echo "error<br/>";
             foreach($user->getMessages() as $msg){
-                $this->flash->error($msg);
+                echo $this->flash->error($msg);
                 //echo $msg . '<br />';
             }
         }
