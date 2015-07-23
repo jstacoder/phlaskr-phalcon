@@ -1,6 +1,6 @@
 <h2>sign up here</h2>
 
-<?php echo $this->tag->form("signup/register"); ?>
+<?php echo $this->tag->form("register"); ?>
 <p>
     <label for=name>name</label>
     <?php echo $this->tag->textField("name"); ?>
