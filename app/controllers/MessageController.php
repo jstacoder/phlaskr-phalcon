@@ -5,23 +5,36 @@ class MessageController extends ControllerBase {
     private $_msgs = array();
     private $_msg_cache = array();
 
+    private function _set_active_link($url){
+        foreach($this->view->navlinks as $link){
+            if($link['url'] == $url){
+                $link['active'] = true;
+            }else{
+                $link['active'] = false;
+            }
+        }
+    }
+    private function _check_uri($uri){
+        return $this->request->getUri() == $uri;
+    }
+
     public function initalize(){
         parent::initalize();
         $this->view->navlinks = array(
-            array(
+            'message'=>array(
                 'url'=>'/message',
                 'text'=>'messages',
-                'active'=>true                
+                'active'=>$this->_check_uri('/messages')
             ),
-            array(
+            'list'=>array(
                 'url'=>'/message/list',
                 'text'=>'list',
-                'active'=>false                
+                'active'=>$this->_check_uri('/messages')
             ),
-            array(
+            'home'=>array(
                 'url'=>'/',
                 'text'=>'home',
-                'active'=>false
+                'active'=>$this->_check_uri('/messages')
             )
         );
         //print_r((array)$this->assets);
@@ -47,6 +60,7 @@ class MessageController extends ControllerBase {
             'active'=>false
         );
         parent::addLink($link);
+        $this->_set_active_link('/message');
         echo $this->view->render('message/list');
     }
     public function addAction(){
@@ -73,6 +87,7 @@ class MessageController extends ControllerBase {
                 )
             );
         }
+        $this->_set_active_link('/message/add');
     }
     public function listAction(){
         $this->initalize();
@@ -82,11 +97,13 @@ class MessageController extends ControllerBase {
              ->form_file = 'layouts/message.volt';
         $this->view
              ->form = new MessageForm;
+        $this->_set_active_link('/message/list');
         echo $this->view
                   ->render('message/list');
     }
     public function removeAction(){
         $this->initalize();
+        $this->_set_active_link('/message/remove');
         $msg_id = $this->request
                        ->getPost()['msg_id'];
             $msg  = Messages::findFirst($msg_id);
@@ -94,7 +111,7 @@ class MessageController extends ControllerBase {
 
             #if($success){
                 $this->flash
-                     ->success('you deleted a message');
+                     ->warning('you deleted a message');
             }else{
                 $this->flash
                      ->error('error');

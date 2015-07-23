@@ -1,6 +1,7 @@
 <?php
 
 use Phalcon\DI\FactoryDefault;
+use Phalcon\Mvc\Router;
 use Phalcon\Mvc\View\Simple as View;
 use Phalcon\Mvc\Url as UrlResolver;
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
@@ -16,6 +17,12 @@ use Phalcon\Assets\Manager;
  * The FactoryDefault Dependency Injector automatically register the right services providing a full stack framework
  */
 $di = new FactoryDefault();
+
+$di->set('router',function(){
+    $router = new Router();
+    $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI);
+    return $router;
+});
 
 
 
