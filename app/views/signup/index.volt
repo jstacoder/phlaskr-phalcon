@@ -1,3 +1,5 @@
+{% extends "index.volt" %}
+{% block content %}
 <h2>sign up here</h2>
 
 <?php echo $this->tag->form("register"); ?>
@@ -13,3 +15,4 @@
     <?php echo $this->tag->submitButton("register"); ?>
 </p>
 </form>
+{% endblock %}
