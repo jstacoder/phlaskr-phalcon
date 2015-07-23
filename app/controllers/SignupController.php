@@ -2,7 +2,7 @@
 
 class SignupController extends ControllerBase{
     public function indexAction(){
-
+        echo $this->view->render('signup/index');
     }
     public function registerAction(){
         echo '<link rel=stylesheet href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />';
@@ -23,6 +23,11 @@ class SignupController extends ControllerBase{
                 //echo $msg . '<br />';
             }
         }
-        //$this->view->disable();
+        $this->dispatcher->forward(
+          array(
+                "controller"=>"signup",
+                "action"=>"index"
+            )  
+        );
     }
 }
