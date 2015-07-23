@@ -8,7 +8,7 @@ class IndexController extends ControllerBase
 
     }
     public function signupAction(){
-        return 'hi';
+        echo 'hi';
     }
 
 }
