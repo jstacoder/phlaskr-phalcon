@@ -18,11 +18,11 @@ class MessageForm extends Form {
         }
         $dte = new Hidden("date_added",array('id'=>'date_added','value'=>date("Y-m-d H:i:s")));
         $this->add($dte);
-        $title = new Text("title",array('id'=>'title'));
+        $title = new Text("title",array('id'=>'title','class'=>'form-control'));
         $title->setLabel("title");
         $this->add($title);
 
-        $msg = new TextArea("text",array('id'=>'text'));
+        $msg = new TextArea("text",array('id'=>'text','class'=>'form-control'));
         $msg->setLabel("Message");
         $this->add($msg);
     }
