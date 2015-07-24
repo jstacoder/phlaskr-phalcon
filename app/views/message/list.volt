@@ -13,7 +13,7 @@
 {% endblock %}
 {% block before_form %}
     {% if form %}
-        {{ form->title->id }}
+        {{ form.title.id }}
     {% endif %}
 {%  endblock %}
 {% block content %}
