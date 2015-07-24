@@ -18,6 +18,10 @@ class MessageController extends ControllerBase {
         return $this->request->getUri() == $uri;
     }
 
+    private function _redirect($uri){
+        $this->request->redirect($uri);
+    }
+
     public function initalize(){
         parent::initalize();
         $this->view->navlinks = array(
@@ -80,12 +84,13 @@ class MessageController extends ControllerBase {
         $this->view->form = new MessageForm;
         if($this->request->isPost()){
             $this->view->form->clear();
-            $this->dispatcher->forward(
-                array(
-                    "controller"=>"message",
-                    "action"=>"list"
-                )
-            );
+            //$this->dispatcher->forward(
+            //    array(
+            //        "controller"=>"message",
+            //        "action"=>"list"
+            //    )
+            //);
+            $this->_redirect('/message/list');
         }
         $this->_set_active_link('/message/add');
     }
