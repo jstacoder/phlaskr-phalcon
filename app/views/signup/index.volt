@@ -1,5 +1,3 @@
-{% extends "index.volt" %}
-{% block content %}
 <h2>sign up here</h2>
 
   {{ form("register") }}
@@ -15,4 +13,3 @@
     {{ submit_button('signup','class':'btn btn-default') }}
 </p>
 </form>
-{% endblock %}
