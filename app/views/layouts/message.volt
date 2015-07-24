@@ -4,14 +4,14 @@
 {{ form('/message/add') }}
     <fieldset>
         <div class=control-group>
-            <label class=control-label>title</label>
-            {{ form.render('title','form-control') }}
+            {{ form.label('title') }}
+            {{ form.render('title') }}
         </div>
         <div class=control-group>
-            <label class=control-label>text</label>
-            {{ form.render('text','form-control') }}
+            {{ form.label('text') }}
+            {{ form.render('text') }}
         </div>
-        {{ submit_button('send message') }}
+        {{ submit_button('send message','class':'btn btn-default') }}
         {{ form.render('date_added') }}
     </fieldset>
     </form>
