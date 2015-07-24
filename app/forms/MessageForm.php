@@ -6,6 +6,13 @@ use Phalcon\Forms\Element\TextArea;
 use Phalcon\Forms\Element\Hidden;
 use Phalcon\Forms\Element\Select;
 
+class MyText extends Text {
+    public function __construct($name,$attrs=array()){
+        $cls = 'form-control'.(isset($attrs['class']) ? ' '.$attrs['class'] : '');
+        parent::__construct($name,$attrs);
+        $this->setAttribute('class',$cls);
+    }
+}
 
 class MessageForm extends Form {
     public function initalize($entity=null,$options=array()){
@@ -18,7 +25,7 @@ class MessageForm extends Form {
         }
         $dte = new Hidden("date_added",array('id'=>'date_added','value'=>date("Y-m-d H:i:s")));
         $this->add($dte);
-        $title = new Text("title",array('id'=>'title','class'=>'form-control'));
+        $title = new MyText("title",array('id'=>'title'));
         $title->setLabel("title");
         $this->add($title);
 
