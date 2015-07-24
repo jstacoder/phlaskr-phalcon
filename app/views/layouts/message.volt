@@ -5,14 +5,13 @@
     <fieldset>
         <div class=control-group>
             <label class=control-label>title</label>
-            {{ text_field('title') }}
+            {{ form.render('title','class':'form-control') }}
         </div>
         <div class=control-group>
             <label class=control-label>text</label>
-            {{ text_area('text') }}
+            {{ form.render('text','class':'form-control') }}
         </div>
         {{ submit_button('send message') }}
+        {{ form.render('date_added') }}
     </fieldset>
     </form>
-
-    <?php //echo $this->getContent(); ?>
