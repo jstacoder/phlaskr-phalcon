@@ -1,5 +1,4 @@
 {
     "require":{
-        "phalcon/devtools":"*"
     }
 }
