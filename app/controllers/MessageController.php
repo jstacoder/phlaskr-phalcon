@@ -19,7 +19,7 @@ class MessageController extends ControllerBase {
     }
 
     private function _redirect($uri){
-        (new Phalcon\Http\Response )->redirect($uri);
+        return (new Phalcon\Http\Response )->redirect($uri);
     }
 
     public function initalize(){
