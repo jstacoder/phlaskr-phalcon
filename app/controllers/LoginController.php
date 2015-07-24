@@ -9,6 +9,7 @@ class LoginController extends ControllerBase
         }
         $this->view->form = new LoginForm();
         $this->view->form->initalize();
+        $this->view->form_file = 'layouts/message.volt';
         echo $this->view->render('index');
     }
 }
