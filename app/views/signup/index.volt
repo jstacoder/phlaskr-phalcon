@@ -2,17 +2,17 @@
 {% block content %}
 <h2>sign up here</h2>
 
-<?php echo $this->tag->form("register"); ?>
+  {{ form("register") }}
 <p>
-    <label for=name>name</label>
-    <?php echo $this->tag->textField("name"); ?>
+    {{ form.label('name') }}
+    {{ form.render('name') }}
 </p>
 <p>
-    <label for=email>email</label>
-    <?php echo $this->tag->textField("email"); ?>
+    {{ form.label('email') }} 
+    {{ form.render('email') }}
 </p>
 <p>
-    <?php echo $this->tag->submitButton("register"); ?>
+    {{ submit_button('signup','class':'btn btn-default') }}
 </p>
 </form>
 {% endblock %}

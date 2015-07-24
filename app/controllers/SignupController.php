@@ -2,6 +2,8 @@
 
 class SignupController extends ControllerBase{
     public function indexAction(){
+        $this->view->form = new SignupForm();
+
         echo $this->view->render('signup/index');
     }
     public function registerAction(){
