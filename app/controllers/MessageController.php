@@ -43,6 +43,7 @@ class MessageController extends ControllerBase {
     public function indexAction(){
         $this->initalize();
         $this->view->form = new MessageForm;
+        $this->view->form->initalize();
         $this->view->messages = array_reverse(Messages::find()->toArray());
         $this->view->afterMsg = $this->_msgs ? 
                                 $this->_msgs['success'] ? 
@@ -64,7 +65,7 @@ class MessageController extends ControllerBase {
         echo $this->view->render('message/list');
     }
     public function addAction(){
-        $this->initalize();
+        $this->initalize();        
         $msg = new Messages();
         $success = $msg->save($this->request->getPost(),array('title','text'));
         if(!$success){
@@ -78,6 +79,7 @@ class MessageController extends ControllerBase {
             $this->_msgs['success'] = "Success adding Message";
         }
         $this->view->form = new MessageForm;
+        $this->view->form->initalize();
         if($this->request->isPost()){
             $this->view->form->clear();
             $this->dispatcher->forward(
@@ -97,6 +99,7 @@ class MessageController extends ControllerBase {
              ->form_file = 'layouts/message.volt';
         $this->view
              ->form = new MessageForm;
+        $this->view->form->initalize();
         $this->_set_active_link('/message/list');
         echo $this->view
                   ->render('message/list');
