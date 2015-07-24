@@ -1,6 +1,11 @@
 <?php
 
 define('VENDOR_DIR',__DIR__ . '/../../public/vendor');
+define('APP_ROOT',dirname(dirname(__FILE__)));
+
+$add_root = function($name){
+    return APP_ROOT.'/'.$name;
+};
 
 if(isset($_SERVER['CLEARDB_DATABASE_URL'])){
     require_once __DIR__ . '/parser.php';
@@ -13,12 +18,12 @@ return new \Phalcon\Config(array(
     'database' => $dbcfg,
     'application' => array(
         'controllersDir' => dirname(dirname(__FILE__)).'/controllers/',
-        'modelsDir'      => __DIR__ . '/../../app/models/',
-        'viewsDir'       => __DIR__ . '/../../app/views/',
-        'pluginsDir'     => __DIR__ . '/../../app/plugins/',
-        'libraryDir'     => __DIR__ . '/../../app/library/',
-        'cacheDir'       => __DIR__ . '/../../app/cache/volt',
-        'formsDir'       => __DIR__ . '/../../app/forms/',
+        'modelsDir'      => $add_root('models/'),
+        'viewsDir'       => $add_root('views/'),
+        'pluginsDir'     => $add_root('plugins/'),
+        'libraryDir'     => $add_root('library/'),
+        'cacheDir'       => $add_root('cache/volt'),
+        'formsDir'       => $add_root('forms/'),
         'assetsDir'     => __DIR__ ,
         'baseUri'        => ''
     ),
