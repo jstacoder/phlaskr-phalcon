@@ -12,7 +12,7 @@ if(isset($_SERVER['CLEARDB_DATABASE_URL'])){
 return new \Phalcon\Config(array(
     'database' => $dbcfg,
     'application' => array(
-        'controllersDir' => __DIR__ . '/../../app/controllers/',
+        'controllersDir' => __DIR__ . dirname(dirname(__FILE__)).'/app/controllers/',
         'modelsDir'      => __DIR__ . '/../../app/models/',
         'viewsDir'       => __DIR__ . '/../../app/views/',
         'pluginsDir'     => __DIR__ . '/../../app/plugins/',
