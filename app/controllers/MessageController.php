@@ -18,10 +18,6 @@ class MessageController extends ControllerBase {
         return $this->request->getUri() == $uri;
     }
 
-    private function _redirect($uri){
-        return $this->response->redirect($uri);
-    }
-
     public function initalize(){
         parent::initalize();
         $this->view->navlinks = array(
@@ -47,7 +43,6 @@ class MessageController extends ControllerBase {
     public function indexAction(){
         $this->initalize();
         $this->view->form = new MessageForm;
-        $this->view->form->initalize();
         $this->view->messages = array_reverse(Messages::find()->toArray());
         $this->view->afterMsg = $this->_msgs ? 
                                 $this->_msgs['success'] ? 
@@ -83,31 +78,33 @@ class MessageController extends ControllerBase {
             $this->_msgs['success'] = "Success adding Message";
         }
         $this->view->form = new MessageForm;
-        $this->view->form->initalize();
         if($this->request->isPost()){
             $this->view->form->clear();
-            //$this->dispatcher->forward(
-            //    array(
-            //        "controller"=>"message",
-            //        "action"=>"list"
-            //    )
-            //);
+            $this->dispatcher->forward(
+                array(
+                    "controller"=>"message",
+                    "action"=>"list"
+                )
+            );
         }
-        $this->_redirect('/message/list');
         $this->_set_active_link('/message/add');
     }
     public function listAction(){
         $this->initalize();
         $this->view
-             ->messages = array_reverse(Messages::find()->toArray());
+             ->messages = Messages::find()->toArray();
         $this->view
              ->form_file = 'layouts/message.volt';
         $this->view
-             ->form = new MessageForm();
-        $this->view->form->initalize();
+             ->form = new MessageForm;
         $this->_set_active_link('/message/list');
         echo $this->view
                   ->render('message/list');
+    }
+    public function debugAction(){
+        $this->initalize();
+        $messages = Messages::find();
+        echo (new \Phalcon\Debug\Dump())->variable($messages,'messages');
     }
     public function removeAction(){
         $this->initalize();
