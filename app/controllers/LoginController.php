@@ -9,6 +9,6 @@ class LoginController extends ControllerBase
         }
         $this->view->form = new LoginForm();
         $this->view->form->initalize();
-        echo $this->view->render('/login/index');
+        echo $this->view->render('index');
     }
 }
