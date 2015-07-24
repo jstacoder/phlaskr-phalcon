@@ -21,7 +21,6 @@
                 "shasum": ""
             },
             "require": {
-                "ext-phalcon": "~2.0",
                 "php": ">=5.3.9"
             },
             "bin": [
