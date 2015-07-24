@@ -3,8 +3,9 @@
 class SignupController extends ControllerBase{
     public function indexAction(){
         $this->view->form = new SignupForm();
+        $this->view->form_file = 'signup/index.volt';
 
-        echo $this->view->render('signup/index');
+        echo $this->view->render('signup');
     }
     public function registerAction(){
         echo '<link rel=stylesheet href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />';
