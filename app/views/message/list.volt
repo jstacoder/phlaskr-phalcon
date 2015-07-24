@@ -13,7 +13,7 @@
 {% endblock %}
 {% block before_form %}
     {% if form %}
-        {{ json_encode(form) }}
+        {{ form->title->id }}
     {% endif %}
 {%  endblock %}
 {% block content %}
