@@ -16,13 +16,13 @@ class MessageForm extends Form {
         }else{
             $this->add(new Hidden("id"));
         }
-        $dte = new Hidden("date_added",array('value'=>date("Y-m-d H:i:s")));
+        $dte = new Hidden("date_added",array('id'=>'date_added','value'=>date("Y-m-d H:i:s")));
         $this->add($dte);
         $title = new Text("title",array('id'=>'title'));
         $title->setLabel("title");
         $this->add($title);
 
-        $msg = new TextArea("Message");
+        $msg = new TextArea("text",array('id'=>'text'));
         $msg->setLabel("Message");
         $this->add($msg);
     }
