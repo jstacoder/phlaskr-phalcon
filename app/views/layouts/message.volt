@@ -5,11 +5,11 @@
     <fieldset>
         <div class=control-group>
             <label class=control-label>title</label>
-            {{ form.render('title','class':'form-control') }}
+            {{ form.render('title','form-control') }}
         </div>
         <div class=control-group>
             <label class=control-label>text</label>
-            {{ form.render('text',['class':'form-control']) }}
+            {{ form.render('text','form-control') }}
         </div>
         {{ submit_button('send message') }}
         {{ form.render('date_added') }}
