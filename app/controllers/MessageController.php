@@ -101,7 +101,7 @@ class MessageController extends ControllerBase {
         $this->view
              ->form_file = 'layouts/message.volt';
         $this->view
-             ->form = new MessageForm;
+             ->form = new MessageForm();
         $this->_set_active_link('/message/list');
         echo $this->view
                   ->render('message/list');

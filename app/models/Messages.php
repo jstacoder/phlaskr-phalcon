@@ -7,4 +7,6 @@ class Messages extends ModelBase {
 
     public $text;
 
+    public $date_added;
+
 }
