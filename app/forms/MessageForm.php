@@ -18,7 +18,7 @@ class MessageForm extends Form {
         }
         $dte = new Hidden("date_added",array('value'=>date("Y-m-d H:i:s")));
         $this->add($dte);
-        $title = new Text("title");
+        $title = new Text("title",array('id'=>'title'));
         $title->setLabel("title");
         $this->add($title);
 
