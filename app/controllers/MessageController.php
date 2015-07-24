@@ -91,7 +91,7 @@ class MessageController extends ControllerBase {
             //    )
             //);
         }
-        $this->_redirect('message/list');
+        $this->_redirect('/message/list');
         $this->_set_active_link('/message/add');
     }
     public function listAction(){
