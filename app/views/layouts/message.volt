@@ -9,7 +9,7 @@
         </div>
         <div class=control-group>
             <label class=control-label>text</label>
-            {{ form.render('text','class':'form-control') }}
+            {{ form.render('text',['class':'form-control']) }}
         </div>
         {{ submit_button('send message') }}
         {{ form.render('date_added') }}
