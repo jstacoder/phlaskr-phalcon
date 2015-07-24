@@ -1,5 +1,5 @@
 
-{% extends 'index.volt' %}
+{% extends 'base.volt' %}
 
 {% block content %}
 
