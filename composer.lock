@@ -1,19 +1,65 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e3efa14483c293474225116d3f9f7cd5",
-    "packages": [],
+    "hash": "726dacc784a5e4cf8f1572ca4021aa2d",
+    "packages": [
+        {
+            "name": "phalcon/devtools",
+            "version": "v2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phalcon/phalcon-devtools.git",
+                "reference": "c7d9a3ede6cd6d803f8347d827803f49dd2136e1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phalcon/phalcon-devtools/zipball/c7d9a3ede6cd6d803f8347d827803f49dd2136e1",
+                "reference": "c7d9a3ede6cd6d803f8347d827803f49dd2136e1",
+                "shasum": ""
+            },
+            "require": {
+                "ext-phalcon": "~2.0",
+                "php": ">=5.3.9"
+            },
+            "bin": [
+                "phalcon.php"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Phalcon": "scripts/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3"
+            ],
+            "authors": [
+                {
+                    "name": "Phalcon Team",
+                    "email": "team@phalconphp.com"
+                }
+            ],
+            "description": "This tools provide you useful scripts to generate code helping to develop faster and easy applications that use with Phalcon framework.",
+            "homepage": "http://phalconphp.com",
+            "keywords": [
+                "Devtools",
+                "framework",
+                "phalcon",
+                "webtools"
+            ],
+            "time": "2015-05-25 23:04:00"
+        }
+    ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": {
-        "php": "~5.6.9"
-    },
+    "platform": [],
     "platform-dev": []
 }
