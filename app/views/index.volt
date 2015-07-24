@@ -15,6 +15,7 @@
                 <div class=col-md-12>
                     {% include "blocks/header.volt" %}
                     {{ flash.output() }}
+                    {% block before_form %}{% endblock %}
                     {% if form %}{% include form_file %}{% endif %}
                 </div>
                 <div class=col-md-12>

@@ -11,6 +11,11 @@
     }
 </style>
 {% endblock %}
+{% block before_form %}
+    {% if form %}
+        {{ json_encode(form) }}
+    {% endif %}
+{%  endblock %}
 {% block content %}
     <h1>Messages</h1>    
     {% if messages %}
