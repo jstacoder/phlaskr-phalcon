@@ -25,6 +25,5 @@ class MessageForm extends Form {
         $this->add($msg);
     }
     public function afterValidation(){
-        $this->clear();
     }
 }
