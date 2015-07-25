@@ -1,21 +1,8 @@
 <?php
-use Phalcon\Forms\Form;
-use Phalcon\Forms\Element\Email;
-use Phalcon\Forms\Element\Password;
-
-
-class LoginForm extends Form {
+class LoginForm extends BaseForm {
     public function initalize(){
-        $email = new Email('email',array('id'=>'email'));
-        $email->setLabel('email');
-        $this->add($email);
-        
-        $password = new Password('password',array('id'=>'password'));
-        $password->setLabel('password');
-        $this->add($password);
-        
-        $confirm = new Password('confirm',array('id'=>'confirm'));
-        $confirm->setLabel('confirm');
-        $this->add($confirm);
+        $this->addField('\Phalcon\Forms\Element\Email','email');
+        $this->addField('\Phalcon\Forms\Element\Password','password');
+        $this->addField('\Phalcon\Forms\Element\Password','confirm');
     }
 }
