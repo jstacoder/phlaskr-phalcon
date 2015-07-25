@@ -1,5 +1,7 @@
 <?php
 
+//include_once dirname(dirname(__FILE__)).'/models/Users'
+
 class LoginController extends ControllerBase
 {
     public function initalize(){
@@ -9,7 +11,7 @@ class LoginController extends ControllerBase
         //parent::initalize();
         $formClass = 'LoginForm';
         if($this->request->isPost()){
-            $user = User::findFirstByEmail($this->request->getPost(),array('email'));
+            $user = Users::findFirstByEmail($this->request->getPost(),array('email'));
         }
         $this->view->form = new LoginForm();
         $this->view->form->initalize();
@@ -26,7 +28,7 @@ class LoginController extends ControllerBase
                 )
             );
         }else{
-            $user = User::findFirstByEmail($this->request->getPost(),array('email'));
+            $user = Users::findFirstByEmail($this->request->getPost(),array('email'));
             echo (new \Phalcon\Debug\Dump())->variable($user,'user');
         }
     }
