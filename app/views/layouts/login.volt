@@ -1,5 +1,5 @@
 {{ form('login/auth') }}
-    {% for itm in ['email','name'] %}
+    {% for itm in ['email','password'] %}
         {{ form.label(itm) }}
         {{ form.render(itm) }}
     {% endfor %}
