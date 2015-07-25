@@ -28,7 +28,7 @@ class LoginController extends ControllerBase
                 )
             );
         }else{
-            $user = Users::findFirstByEmail($this->request->getPost(),array('email'));
+            $user = Users::findFirstByEmail($this->request->getPost()['email']);
             echo (new \Phalcon\Debug\Dump())->variable($user,'user');
         }
     }
