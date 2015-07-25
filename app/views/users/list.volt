@@ -1,7 +1,12 @@
 {% extends "index.volt" %}
 
 {% block content %}
-	{% for user in users %}
-		{{ user.name }}
-	{% endfor %}
+	<ul class="list-unstyled">
+		{% for user in users %}
+			<li>
+				{{ user.name }}<br />
+				{{ user.email }}
+			</li>
+		{% endfor %}
+	</ul>
 {% endblock %}
