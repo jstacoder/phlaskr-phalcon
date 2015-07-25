@@ -2,7 +2,11 @@
 
 class LoginController extends ControllerBase
 {
+    public function initalize(){
+        parent::initalize();
+    }
     public function indexAction(){
+        //parent::initalize();
         $formClass = 'LoginForm';
         if($this->request->isPost()){
             $user = User::findFirstByEmail($this->request->getPost(),array('email'));
@@ -13,6 +17,7 @@ class LoginController extends ControllerBase
         echo $this->view->render('login/index');
     }
     public function authAction(){
+        //parent::initalize();
         if(!$this->request->isPost()){
             $this->dispatcher->forward(
                 array(
