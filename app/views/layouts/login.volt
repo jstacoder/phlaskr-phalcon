@@ -1,6 +1,6 @@
 {{ form('login/auth') }}
     {% for itm in ['email','password'] %}
-        <div class="form-control">
+        <div class="form-group">
             {{ form.label(itm) }}
             {{ form.render(itm) }}
         </div>
