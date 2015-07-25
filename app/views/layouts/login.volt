@@ -1,4 +1,4 @@
-{{ form('auth') }}
+{{ form('/login/auth','method':'post') }}
     {% for itm in ['email','password'] %}
         <div class="form-group">
             {{ form.label(itm) }}
