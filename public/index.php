@@ -31,6 +31,8 @@ try {
     echo $application->handle()->getContent();
 
 } catch (Exception $e) {
+    $debug = new \Phalcon\Debug();
+    $debug->listen();
     echo "PhalconException:" . $e->getMessage().'<br/>';
     echo "File: " . $e->getFile().'<br/>';
     echo "Line: " . $e->getLine().'<br/>';
