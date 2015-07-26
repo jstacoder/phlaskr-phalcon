@@ -7,7 +7,7 @@ class SignupForm extends BaseForm
         $this->add_field('\Phalcon\Forms\Element\Text','name');
         $this->add_field('\Phalcon\Forms\Element\Email','email');
         $this->add_field('\Phalcon\Forms\Element\Password','password');
-        $this->add_field('\Phalcon\Forms\Element\Confirm','confirm');
+        $this->add_field('\Phalcon\Forms\Element\Password','confirm');
         parent::__construct($entity,$options);
     }
 }
