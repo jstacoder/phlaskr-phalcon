@@ -1,6 +1,6 @@
 <h2>sign up here</h2>
 
-  {{ form("/signup/register","method:"post") }}
+  {{ form("/signup/register","method":"post") }}
 <p>
     {{ form.label('name') }}
     {{ form.render('name') }}
