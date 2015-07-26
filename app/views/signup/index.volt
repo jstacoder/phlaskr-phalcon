@@ -13,5 +13,4 @@
     {{ render_field(form,'confirm') }}
     {{ submit_button('signup','class':'btn btn-default') }}
     {{ tag_html_close('fieldset') }}
-  {{ form_close() }}
-
+  {{ end_form() }}
