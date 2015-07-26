@@ -1,12 +1,12 @@
 <h2>sign up here</h2>
 
-  {{ form("register") }}
+  {{ form("/signup/register","method:"post") }}
 <p>
     {{ form.label('name') }}
     {{ form.render('name') }}
 </p>
 <p>
-    {{ form.label('email') }} 
+    {{ form.label('email') }}
     {{ form.render('email') }}
 </p>
 <p>
