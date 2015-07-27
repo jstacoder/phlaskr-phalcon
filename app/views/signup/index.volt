@@ -1,8 +1,8 @@
 {% macro render_field(form,name) %}
-  <div class=form-group>
+  {{ tag_html('div','class':'form-group') }}
     {{ form.label(name) }}
     {{ form.render(name) }}
-  </div>
+  {{ tag_html_close('div') }}
 {% endmacro %}
   {{ form("/signup/register","method":"post") }}
     {{ tag_html('fieldset') }}
