@@ -32,7 +32,7 @@ class LoginController extends ControllerBase
             $password = $this->request->getPost('password');
             if($user->check_pw($password)){
                 $this->flash->success('Thanks for coming back '.$user->name);
-                (new \Phalcon\Http\Response())->redirect('/index/index');
+                return (new \Phalcon\Http\Response())->redirect('/index/index');
                 //$this->dispatcher->forward(
                 //    array(
                 //        'controller'=>'index',
