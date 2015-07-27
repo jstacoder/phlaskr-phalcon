@@ -7,7 +7,7 @@ class ControllerBase extends Controller
 
     private static $_links = null;
     
-    private function _set_active($name){
+    protected function _set_active($name){
         foreach($this->navlinks as $k=>$v){
             if($k == $name){
                 $v['active'] = true;
@@ -48,3 +48,4 @@ class ControllerBase extends Controller
             );
     }
 }
+
