@@ -5,19 +5,6 @@ class MessageController extends ControllerBase {
     private $_msgs = array();
     private $_msg_cache = array();
 
-    private function _set_active_link($url){
-        foreach($this->view->navlinks as $link){
-            if($link['url'] == $url){
-                $link['active'] = true;
-            }else{
-                $link['active'] = false;
-            }
-        }
-    }
-    private function _check_uri($uri){
-        return $this->request->getUri() == $uri;
-    }
-
     public function initalize(){
         parent::initalize();
         //print_r((array)$this->assets);
@@ -38,7 +25,7 @@ class MessageController extends ControllerBase {
         $this->view->form_file = 'layouts/message.volt';
         $this->view->assetData = (array)$this->assets;
         $this->view->assets = $this->assets;
-        $this->_set_active_link('/message');
+        parent::_set_active('message');
         echo $this->view->render('message/list');
     }
     public function addAction(){
@@ -76,7 +63,7 @@ class MessageController extends ControllerBase {
         $this->view
              ->form_file = 'layouts/message.volt';
         $this->view->form->initalize();
-        $this->_set_active_link('/message/list');
+        parent::_set_active('message_list');
         echo $this->view
                   ->render('message/list');
     }

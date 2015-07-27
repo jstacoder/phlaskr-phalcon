@@ -32,12 +32,13 @@ class LoginController extends ControllerBase
             $password = $this->request->getPost('password');
             if($user->check_pw($password)){
                 $this->flash->success('Thanks for coming back '.$user->name);
-                $this->dispatcher->forward(
-                    array(
-                        'controller'=>'index',
-                        'action'=>'index'
-                    )
-                );
+                return (new \Phalcon\Http\Response())->redirect('/index/index');
+                //$this->dispatcher->forward(
+                //    array(
+                //        'controller'=>'index',
+                //        'action'=>'index'
+                //    )
+                // );
             }else{
                 $this->flash->error('Could not authenticate an account with those credentials');
                 $this->dispatcher->forward(

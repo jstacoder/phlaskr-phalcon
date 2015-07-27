@@ -6,6 +6,16 @@ class ControllerBase extends Controller
 {
 
     private static $_links = null;
+    
+    private function _set_active($name){
+        foreach($this->navlinks as $k=>$v){
+            if($k == $name){
+                $v['active'] = true;
+            }else{
+                $v['active'] = false;
+            }
+        }        
+    }
 
     private static function getLinks(){
         return is_null(self::$_links) ? array() : self::$_links;   
@@ -17,15 +27,23 @@ class ControllerBase extends Controller
 
     public function initalize(){
             $this->view->navlinks = array(
+                'home'=>
+                array(
+                    'url'=>'/',
+                    'text'=>'home',
+                    'active'=>true
+                ),
+                'message'=>
                 array(
                     'url'=>'/messages',
                     'text'=>'messages',
                     'active'=>false
                 ),
+                'message_list'=>
                 array(
-                    'url'=>'/messages/add',
-                    'text'=>'add',
-                    'active'=>true
+                    'url'=>'/messages/list',
+                    'text'=>'list',
+                    'active'=>false
                 )
             );
     }
