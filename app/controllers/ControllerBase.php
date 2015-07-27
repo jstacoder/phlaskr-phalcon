@@ -18,13 +18,18 @@ class ControllerBase extends Controller
     public function initalize(){
             $this->view->navlinks = array(
                 array(
+                    'url'=>'/',
+                    'text'=>'home',
+                    'active'=>false
+                ),
+                array(
                     'url'=>'/messages',
                     'text'=>'messages',
                     'active'=>false
                 ),
                 array(
-                    'url'=>'/messages/add',
-                    'text'=>'add',
+                    'url'=>'/messages/list',
+                    'text'=>'list',
                     'active'=>true
                 )
             );
