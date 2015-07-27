@@ -20,23 +20,6 @@ class MessageController extends ControllerBase {
 
     public function initalize(){
         parent::initalize();
-        $this->view->navlinks = array(
-            'message'=>array(
-                'url'=>'/message',
-                'text'=>'messages',
-                'active'=>$this->_check_uri('/messages')
-            ),
-            'list'=>array(
-                'url'=>'/message/list',
-                'text'=>'list',
-                'active'=>$this->_check_uri('/messages')
-            ),
-            'home'=>array(
-                'url'=>'/',
-                'text'=>'home',
-                'active'=>$this->_check_uri('/messages')
-            )
-        );
         //print_r((array)$this->assets);
     }
 
@@ -55,12 +38,6 @@ class MessageController extends ControllerBase {
         $this->view->form_file = 'layouts/message.volt';
         $this->view->assetData = (array)$this->assets;
         $this->view->assets = $this->assets;
-        $link = array(
-            'url'=>'/messages',
-            'text'=>'messages',
-            'active'=>false
-        );
-        parent::addLink($link);
         $this->_set_active_link('/message');
         echo $this->view->render('message/list');
     }
@@ -89,16 +66,15 @@ class MessageController extends ControllerBase {
                 )
             );
         }
-        $this->_set_active_link('/message/add');
     }
     public function listAction(){
         $this->initalize();
         $this->view
              ->messages = Messages::find()->toArray();
         $this->view
-             ->form_file = 'layouts/message.volt';
-        $this->view
              ->form = new MessageForm;
+        $this->view
+             ->form_file = 'layouts/message.volt';
         $this->view->form->initalize();
         $this->_set_active_link('/message/list');
         echo $this->view
