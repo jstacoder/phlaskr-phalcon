@@ -6,7 +6,7 @@ class ControllerBase extends Controller
 {
 
     private static $_links = null;
-    
+
     protected function _set_active($name){
         foreach($this->navlinks as $k=>$v){
             if($k == $name){
@@ -14,11 +14,11 @@ class ControllerBase extends Controller
             }else{
                 $v['active'] = false;
             }
-        }        
+        }
     }
 
     private static function getLinks(){
-        return is_null(self::$_links) ? array() : self::$_links;   
+        return is_null(self::$_links) ? array() : self::$_links;
     }
 
     public static function addLink($link){
@@ -35,17 +35,16 @@ class ControllerBase extends Controller
                 ),
                 'message'=>
                 array(
-                    'url'=>'/messages',
-                    'text'=>'messages',
+                    'url'=>'/message',
+                    'text'=>'message',
                     'active'=>false
                 ),
                 'message_list'=>
                 array(
-                    'url'=>'/messages/list',
+                    'url'=>'/message/list',
                     'text'=>'list',
                     'active'=>false
                 )
             );
     }
 }
-
