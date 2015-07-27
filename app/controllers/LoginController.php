@@ -28,8 +28,26 @@ class LoginController extends ControllerBase
                 )
             );
         }else{
-            $user = Users::findFirstByEmail($this->request->getPost()['email']);
-            echo (new \Phalcon\Debug\Dump())->variable($user,'user');
+            $user = Users::findFirstByEmail($this->request->getPost('email'));
+            $password = $this->request->getPost('password');
+            if($user->check_pw($password)){
+                $this->flash->success('Thanks for coming back '.$user->name);
+                $this->dispatcher->forward(
+                    array(
+                        'controller'=>'index',
+                        'action'=>'index'
+                    )
+                );
+            }else{
+                $this->flash->error('Could not authenticate an account with those credentials');
+                $this->dispatcher->forward(
+                    array(
+                        'controller'=>'login',
+                        'action'=>'index'
+                    )
+                );
+            }
+            //echo (new \Phalcon\Debug\Dump())->variable($user,'user');
         }
     }
 }
