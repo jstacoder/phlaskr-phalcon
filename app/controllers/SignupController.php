@@ -2,11 +2,13 @@
 
 class SignupController extends ControllerBase{
     public function indexAction(){
+        parent::initalize();
         $this->view->form = new SignupForm();
         $this->view->form_file = 'signup/index.volt';
         echo $this->view->render('signup');
     }
     public function registerAction(){
+        parent::initalize();
         //echo '<link rel=stylesheet href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />';
         $user = new Users();
         if($this->request0>isPost() && $this->request->getPost('password') == $this->request->getPost('confirm')){

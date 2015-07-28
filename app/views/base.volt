@@ -13,7 +13,9 @@
         <div class=container>
             <div class=row>
                 <div class=col-md-12>
+                    {% if navlinks %}
                     {% include "blocks/header.volt" with navlinks %}
+                    {% endif %}
                     {{ flash.output() }}
                     {% block before_form %}{% endblock %}
                     {% if form and form_file %}{% include form_file %}{% endif %}
