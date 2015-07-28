@@ -44,6 +44,6 @@ class ControllerBase extends Controller
         self::set_links();
     }
     public function set_links(){
-            static::$_view->navlinks = static::$navlinks;
+            self::$_view->navlinks = self::$navlinks;
     }
 }
