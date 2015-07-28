@@ -28,7 +28,7 @@ class ControllerBase extends Controller
                 )
             );
 
-    protected static function _set_active($name){
+    public static function _set_active($name){
         foreach(self::$navlinks as $k=>$v){
             if($k == $name){
                 $v['active'] = true;

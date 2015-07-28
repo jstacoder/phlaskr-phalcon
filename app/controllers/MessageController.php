@@ -15,21 +15,21 @@ class MessageController extends ControllerBase {
         $this->view->form = new MessageForm;
         $this->view->form->initalize();
         $this->view->messages = array_reverse(Messages::find()->toArray());
-        $this->view->afterMsg = $this->_msgs ? 
-                                $this->_msgs['success'] ? 
-                                $this->_msgs['success'] : 
-                                $this->_msgs['error'] ? 
-                                $this->_msgs['error'] : 
-                                '' : 
+        $this->view->afterMsg = $this->_msgs ?
+                                $this->_msgs['success'] ?
+                                $this->_msgs['success'] :
+                                $this->_msgs['error'] ?
+                                $this->_msgs['error'] :
+                                '' :
                                 '';
         $this->view->form_file = 'layouts/message.volt';
         $this->view->assetData = (array)$this->assets;
         $this->view->assets = $this->assets;
-        parent::_set_active('message');
+        static::_set_active('message');
         echo $this->view->render('message/list');
     }
     public function addAction(){
-        $this->initalize();        
+        $this->initalize();
         $msg = new Messages();
         $success = $msg->save($this->request->getPost(),array('title','text'));
         if(!$success){
@@ -63,7 +63,7 @@ class MessageController extends ControllerBase {
         $this->view
              ->form_file = 'layouts/message.volt';
         $this->view->form->initalize();
-        parent::_set_active('message_list');
+        static::_set_active('message_list');
         echo $this->view
                   ->render('message/list');
     }
