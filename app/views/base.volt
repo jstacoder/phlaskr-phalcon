@@ -2,8 +2,8 @@
 <html>
     <head>
         <title>Phalcon PHP Framework</title>
-        <link 
-            rel="stylesheet" 
+        <link
+            rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
         />
         {{ assets.outputCss() }}
@@ -13,10 +13,10 @@
         <div class=container>
             <div class=row>
                 <div class=col-md-12>
-                    {% include "blocks/header.volt" %}
+                    {% include "blocks/header.volt" with navlinks %}
                     {{ flash.output() }}
                     {% block before_form %}{% endblock %}
-                    {% if form %}{% include form_file %}{% endif %}
+                    {% if form and form_file %}{% include form_file %}{% endif %}
                 </div>
                 <div class=col-md-12>
                     <div class=row>

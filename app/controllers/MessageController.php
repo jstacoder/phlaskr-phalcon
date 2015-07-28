@@ -57,9 +57,9 @@ class MessageController extends ControllerBase {
     public function listAction(){
         $this->initalize();
         $this->view->messages = Messages::find()->toArray();
-        $this->view->form = new MessageForm;
+        $this->view->form = new MessageForm();
         $this->view->form_file = 'layouts/message.volt';
-        $this->view->form->initalize();
+        //$this->view->form->initalize();
         static::_set_active('message_list');
         echo $this->view->render('message/list');
     }

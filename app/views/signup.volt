@@ -1,5 +1,5 @@
-{% extends 'base.volt' %}
+{% extends "base.volt" %}
 
 {% block content %}
-    hi
+    signup.volt
 {% endblock %}

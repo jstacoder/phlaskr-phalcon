@@ -1,4 +1,4 @@
-{% extends "index.volt" %}
+{% extends "base.volt" %}
 
 {% block content %}
     <p>login</p>
