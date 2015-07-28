@@ -56,16 +56,12 @@ class MessageController extends ControllerBase {
     }
     public function listAction(){
         $this->initalize();
-        $this->view
-             ->messages = Messages::find()->toArray();
-        $this->view
-             ->form = new MessageForm;
-        $this->view
-             ->form_file = 'layouts/message.volt';
+        $this->view->messages = Messages::find()->toArray();
+        $this->view->form = new MessageForm;
+        $this->view->form_file = 'layouts/message.volt';
         $this->view->form->initalize();
         static::_set_active('message_list');
-        echo $this->view
-                  ->render('message/list');
+        echo $this->view->render('message/list');
     }
     public function debugAction(){
         $this->initalize();
@@ -74,25 +70,18 @@ class MessageController extends ControllerBase {
     }
     public function removeAction(){
         $this->initalize();
-        $this->_set_active_link('/message/remove');
-        $msg_id = $this->request
-                       ->getPost()['msg_id'];
-            $msg  = Messages::findFirst($msg_id);
-            if($success = $msg ? $msg->delete() : null){
-
-            #if($success){
-                $this->flash
-                     ->warning('you deleted a message');
-            }else{
-                $this->flash
-                     ->error('error');
-            }
-                $this->dispatcher
-                     ->forward(
+        $msg_id = $this->request->getPost('msg_id');
+        $msg  = Messages::findFirst($msg_id);
+        if($success = $msg ? $msg->delete() : null){
+                $this->flash->warning('you deleted a message');
+        }else{
+                $this->flash->error('error');
+        }
+                $this->dispatcher->forward(
                          array(
                              "controller"=>"message",
                              "action"=>"list"
                          )
-                     );
-            }
+                );
+    }
 }
